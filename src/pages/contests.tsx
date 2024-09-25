@@ -1,6 +1,8 @@
-"use client"; // Ensure this is included if you're using client-side state
+"use client";
 import Layout from "@/app/layout";
+import Navbar from "@/components/Navbar";
 import { useState } from 'react';
+import '../styles/globals.css';
 
 const ContestCreationPage = () => {
   const [contestName, setContestName] = useState('');
@@ -66,15 +68,16 @@ const ContestCreationPage = () => {
   };
 
   return (
-    <Layout>
-      <div className="w-full min-h-screen bg-gradient-to-r from-blue-400 to-purple-500 flex flex-col items-center">
+    <>
+      <Navbar />
+      <div className="w-full min-h-screen bg-gradient-to-b from-teal-50 to-white flex flex-col items-center">
         <div className="max-w-5xl w-full p-8 bg-white rounded-lg shadow-lg">
-          <h1 className="text-4xl font-bold text-center mb-6 text-teal-600">Contest Management</h1>
-          
+          <h1 className="text-4xl font-bold text-center mb-6 text-teal-700">Contest Management</h1>
+
           <div className="flex justify-center mb-6">
             <button
               onClick={() => setShowForm(!showForm)}
-              className="p-4 bg-teal-600 text-white rounded-lg shadow hover:bg-teal-700 transition"
+              className="p-4 bg-teal-700 text-white rounded-lg shadow hover:bg-teal-800 transition transform hover:scale-105"
             >
               {showForm ? 'Cancel Contest Creation' : 'Create Contest'}
             </button>
@@ -87,7 +90,7 @@ const ContestCreationPage = () => {
                 placeholder="Contest Name"
                 value={contestName}
                 onChange={(e) => setContestName(e.target.value)}
-                className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+                className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                 required
               />
               <input
@@ -95,14 +98,14 @@ const ContestCreationPage = () => {
                 placeholder="Writer Name"
                 value={writer}
                 onChange={(e) => setWriter(e.target.value)}
-                className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+                className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                 required
               />
               <input
                 type="datetime-local"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+                className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                 required
               />
               <input
@@ -110,13 +113,13 @@ const ContestCreationPage = () => {
                 placeholder="Contest Length (in minutes)"
                 value={length}
                 onChange={(e) => setLength(e.target.value)}
-                className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+                className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                 required
               />
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+                className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                 required
               >
                 <option value="" disabled>Select Category</option>
@@ -126,7 +129,7 @@ const ContestCreationPage = () => {
               </select>
               <button
                 type="submit"
-                className="p-4 bg-teal-600 text-white rounded-lg shadow hover:bg-teal-700 transition"
+                className="p-4 bg-teal-700 text-white rounded-lg shadow hover:bg-teal-800 transition transform hover:scale-105"
               >
                 Create Contest
               </button>
@@ -134,7 +137,7 @@ const ContestCreationPage = () => {
           )}
 
           {/* Contests Section */}
-          <h2 className="text-3xl font-bold text-center mb-4">Current Contests</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 text-teal-600">Current Contests</h2>
           <div className="overflow-x-auto mb-8">
             <table className="w-full bg-gray-100 rounded-lg shadow">
               <thead className="bg-teal-600 text-white">
@@ -148,7 +151,7 @@ const ContestCreationPage = () => {
               </thead>
               <tbody>
                 {contests.map((contest) => (
-                  <tr key={contest.id} className="border-b hover:bg-gray-200">
+                  <tr key={contest.id} className="border-b hover:bg-gray-200 transition duration-200">
                     <td className="py-3 px-4">{contest.name}</td>
                     <td className="py-3 px-4">{contest.writer}</td>
                     <td className="py-3 px-4">{new Date(contest.startDate).toLocaleString()}</td>
@@ -163,7 +166,7 @@ const ContestCreationPage = () => {
           </div>
 
           {/* Past Contests Section */}
-          <h2 className="text-3xl font-bold text-center mb-4">Past Contests</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 text-teal-600">Past Contests</h2>
           <div className="overflow-x-auto mb-8">
             <table className="w-full bg-gray-100 rounded-lg shadow">
               <thead className="bg-teal-600 text-white">
@@ -177,7 +180,7 @@ const ContestCreationPage = () => {
               </thead>
               <tbody>
                 {pastContests.map((contest) => (
-                  <tr key={contest.id} className="border-b hover:bg-gray-200">
+                  <tr key={contest.id} className="border-b hover:bg-gray-200 transition duration-200">
                     <td className="py-3 px-4">{contest.name}</td>
                     <td className="py-3 px-4">{contest.writer}</td>
                     <td className="py-3 px-4">{new Date(contest.startDate).toLocaleString()}</td>
@@ -190,7 +193,7 @@ const ContestCreationPage = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

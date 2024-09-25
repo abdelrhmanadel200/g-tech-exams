@@ -1,9 +1,10 @@
-"use client"; // Ensure this is included if you're using client-side state
+"use client"; 
 import Layout from "@/app/layout";
 import { useState } from "react";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
-import app from "../firebaseConfig"; // Adjust the import based on your Firebase config
-
+import app from "../firebaseConfig"; 
+import Navbar from "@/components/Navbar";
+import '../styles/globals.css';
 const ResetPasswordPage = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -32,34 +33,32 @@ const ResetPasswordPage = () => {
   };
 
   return (
-    <Layout>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500 p-8">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-center mb-6 text-teal-600">Reset Your Password</h1>
-          <p className="text-gray-600 text-center mb-4">Enter your email to receive a password reset link.</p>
+      <><Navbar /><div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-teal-50 to-white p-8">
+          <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
+              <h1 className="text-3xl font-bold text-center mb-6 text-teal-600">Reset Your Password</h1>
+              <p className="text-gray-600 text-center mb-4">Enter your email to receive a password reset link.</p>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input
-              type="email"
-              placeholder="Email Address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
-              required
-            />
-            <button
-              type="submit"
-              className={`w-full p-4 bg-teal-600 text-white rounded-lg shadow hover:bg-teal-700 transition ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
-              disabled={isLoading}
-            >
-              {isLoading ? "Sending..." : "Send Reset Link"}
-            </button>
-          </form>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                  <input
+                      type="email"
+                      placeholder="Email Address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+                      required />
+                  <button
+                      type="submit"
+                      className={`w-full p-4 bg-teal-600 text-white rounded-lg shadow hover:bg-teal-700 transition ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
+                      disabled={isLoading}
+                  >
+                      {isLoading ? "Sending..." : "Send Reset Link"}
+                  </button>
+              </form>
 
-          {message && <p className="text-center text-red-500 mt-4">{message}</p>}
-        </div>
-      </div>
-    </Layout>
+              {message && <p className="text-center text-red-500 mt-4">{message}</p>}
+          </div>
+      </div></>
+     
   );
 };
 

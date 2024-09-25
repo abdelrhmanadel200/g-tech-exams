@@ -1,6 +1,6 @@
 const Footer = () => (
-    <footer className="bg-gray-800 p-4 text-white text-center">
-      <p>&copy; 2024 My Blog</p>
+    <footer className="bg-gradient-to-r from-[#00454A] to-[#007C7E]' p-4 text-white text-center">
+      <p>&copy; Gammal Tech</p>
     </footer>
   );
   

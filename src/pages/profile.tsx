@@ -1,5 +1,9 @@
+"use client";
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import Layout from '@/app/layout';
+import Navbar from '@/components/Navbar';
+import { FiPlus } from 'react-icons/fi'; 
+import '../styles/globals.css';
 
 const UserProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -7,12 +11,10 @@ const UserProfilePage = () => {
   const [jobTitle, setJobTitle] = useState("Software Developer");
   const [skills, setSkills] = useState(["C#", "JavaScript", "Python"]);
   const [newSkill, setNewSkill] = useState("");
-  const [profilePicture, setProfilePicture] = useState("https://via.placeholder.com/100");
+  const [profilePicture, setProfilePicture] = useState("");
 
-  // Set initial state for the profile picture only on the client
   useEffect(() => {
-    // This runs only on the client
-    const initialProfilePicture = localStorage.getItem('profilePicture') || "https://via.placeholder.com/100";
+    const initialProfilePicture = localStorage.getItem('profilePicture') || "";
     setProfilePicture(initialProfilePicture);
   }, []);
 
@@ -22,8 +24,6 @@ const UserProfilePage = () => {
 
   const handleSaveProfile = () => {
     setIsEditing(false);
-    alert('Profile updated!');
-    // Save to localStorage or server
     localStorage.setItem('profilePicture', profilePicture);
   };
 
@@ -45,63 +45,66 @@ const UserProfilePage = () => {
     }
   };
 
+  const handlePictureClick = () => {
+    document.getElementById('fileInput').click();
+  };
+
   return (
-    <Layout>
-      <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-r from-blue-200 to-purple-200 p-4">
-        {/* Profile Summary */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6 flex items-center">
-          <img
-            src={profilePicture}
-            alt="Profile"
-            className="rounded-full mr-4 w-24 h-24"
-          />
-          <div>
+    <>
+      <Navbar />
+      <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-b from-teal-100 to-white p-6">
+        
+        {/* Profile Card */}
+        <div className="bg-white rounded-3xl shadow-lg p-8 mb-6 flex items-center transition-transform transform hover:scale-105 duration-300 ease-in-out">
+          <div className="flex-shrink-0 relative">
+            <img
+              src={profilePicture || "https://via.placeholder.com/100"}
+              alt="Profile"
+              className="rounded-full border-4 border-teal-500 w-28 h-28 cursor-pointer shadow-lg transition-all duration-200 ease-in-out hover:shadow-xl"
+              onClick={handlePictureClick}
+            />
+            {!profilePicture && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <FiPlus className="text-teal-500 text-3xl" />
+              </div>
+            )}
+            <input
+              id="fileInput"
+              type="file"
+              accept="image/*"
+              onChange={handlePictureChange}
+              className="hidden"
+            />
+          </div>
+          <div className="ml-6">
             {isEditing ? (
               <>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handlePictureChange}
-                  className="mb-2"
-                />
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="text-2xl font-bold border-b-2 border-gray-300 focus:outline-none"
-                />
+                  className="text-3xl font-bold border-b-2 border-gray-300 focus:outline-none transition duration-300" />
                 <input
                   type="text"
                   value={jobTitle}
                   onChange={(e) => setJobTitle(e.target.value)}
-                  className="text-gray-600 mt-2 border-b-2 border-gray-300 focus:outline-none"
-                />
+                  className="text-lg text-gray-600 mt-2 border-b-2 border-gray-300 focus:outline-none transition duration-300" />
               </>
             ) : (
               <>
-                <h2 className="text-2xl font-bold">{name}</h2>
-                <h3 className="text-gray-600">{jobTitle}</h3>
+                <h2 className="text-3xl font-bold">{name}</h2>
+                <h3 className="text-lg text-gray-600">{jobTitle}</h3>
               </>
             )}
           </div>
         </div>
 
-        {/* Achievements Section */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6 w-full max-w-lg">
-          <h2 className="text-xl font-bold mb-4" id="achievements">Achievements</h2>
-          <ul className="list-disc pl-5">
-            <li>1st at contest #6</li>
-            <li>2nd at contest #4</li>
-            <li>3rd at contest #5</li>
-          </ul>
-        </div>
-
         {/* Skills Section */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6 w-full max-w-lg">
-          <h2 className="text-xl font-bold mb-4" id="skills">Skills</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+        <div className="bg-white rounded-3xl shadow-lg p-6 mb-6 w-full max-w-lg transition-transform transform hover:scale-105 duration-300 ease-in-out">
+          <h2 className="text-xl font-bold mb-4">Skills</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4">
             {skills.map((skill, index) => (
-              <div key={index} className="bg-[#e8b86d] text-white text-lg font-bold rounded-full py-2 text-center">
+              <div key={index} className="bg-teal-500 text-white text-lg font-semibold rounded-full py-2 text-center transition-transform transform hover:scale-105 duration-300 ease-in-out">
                 {skill}
               </div>
             ))}
@@ -113,9 +116,8 @@ const UserProfilePage = () => {
                 value={newSkill}
                 onChange={(e) => setNewSkill(e.target.value)}
                 placeholder="Add a new skill"
-                className="border p-2 rounded w-full"
-              />
-              <button onClick={handleAddSkill} className="mt-2 bg-[#e8b86d] text-white rounded-full px-4 py-2">
+                className="border p-2 rounded w-full" />
+              <button onClick={handleAddSkill} className="mt-2 bg-teal-600 text-white rounded-full px-4 py-2 transition-transform transform hover:scale-105 duration-300 ease-in-out">
                 Add Skill
               </button>
             </>
@@ -123,22 +125,24 @@ const UserProfilePage = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-center space-x-4">
+        <div className="flex justify-center space-x-4 mb-6">
           {isEditing ? (
-            <button onClick={handleSaveProfile} className="bg-[#e8b86d] text-black text-lg font-semibold rounded-full px-6 py-2">
+            <button onClick={handleSaveProfile} className="bg-teal-600 text-white text-lg font-semibold rounded-full px-6 py-2 transition-transform transform hover:scale-105 duration-300 ease-in-out">
               Save Changes
             </button>
           ) : (
-            <button onClick={handleEditProfile} className="bg-[#e8b86d] text-black text-lg font-semibold rounded-full px-6 py-2">
+            <button onClick={handleEditProfile} className="bg-teal-600 text-white text-lg font-semibold rounded-full px-6 py-2 transition-transform transform hover:scale-105 duration-300 ease-in-out">
               Edit Profile
             </button>
           )}
-          <button className="bg-[#d9d9d9] text-black text-lg font-semibold rounded-full px-6 py-2">
+          <button className="bg-gray-300 text-black text-lg font-semibold rounded-full px-6 py-2 transition-transform transform hover:scale-105 duration-300 ease-in-out">
+          <Link href="/exam">
             View Exams
+            </Link>
           </button>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 
