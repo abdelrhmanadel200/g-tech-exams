@@ -1,6 +1,5 @@
 
 import React from 'react';
-import Layout from '@/app/layout';
 import Navbar from '@/components/Navbar';
 import '../styles/globals.css';
 const LeaderboardPage = () => {

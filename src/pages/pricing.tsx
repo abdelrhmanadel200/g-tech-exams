@@ -1,7 +1,6 @@
 
 import '../styles/globals.css';
 import React from 'react';
-import Layout from '@/app/layout';
 import Navbar from '@/components/Navbar';
 
 const PricingPage = () => {
@@ -45,7 +44,7 @@ const PricingPage = () => {
       </div><div className="bg-gray-100 py-10">
         <h2 className="text-4xl font-bold text-center mb-4">What Our Users Say</h2>
         <div className="max-w-3xl mx-auto text-center">
-          <p className="italic mb-4">"This service has transformed the way I work. Highly recommend!"</p>
+          <p className="italic mb-4">This service has transformed the way I work. Highly recommend!</p>
           <p className="text-gray-600">— Happy Customer</p>
         </div>
       </div><div className="py-10 text-center">

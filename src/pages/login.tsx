@@ -1,7 +1,6 @@
 "use client"; 
 import '../styles/globals.css';
 import { useState } from 'react';
-import Layout from '../app/layout'; 
 import { useRouter } from 'next/router';
 import Navbar from '@/components/Navbar';
 
@@ -66,7 +65,7 @@ const LoginPage = () => {
         </form>
 
         <div className="mt-4 text-center">
-          <span className="text-gray-600">Don't have an account? </span>
+          <span className="text-gray-600">Dont have an account? </span>
           <button
             className="text-teal-600 underline"
             onClick={() => router.push('/signup')}

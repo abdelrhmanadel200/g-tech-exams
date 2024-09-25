@@ -126,7 +126,7 @@ const ChallengeAIPage = () => {
 
           {showAIAnswer && (
             <div className="mt-6">
-              <h2 className="text-xl font-semibold text-gray-700">AI's Answer:</h2>
+              <h2 className="text-xl font-semibold text-gray-700">AI Answer:</h2>
               <div className="p-4 border border-teal-300 rounded-lg bg-teal-50">
                 <p className="text-lg text-gray-800">{aiAnswer}</p>
               </div>

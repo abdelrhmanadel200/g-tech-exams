@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from 'next/link';
 
 const HomePage = () => {
@@ -87,7 +86,7 @@ const HomePage = () => {
             { name: "Charlie", testimonial: "I love the community support and resources available." }
           ].map((test) => (
             <div key={test.name} className="border-l-4 border-white p-4">
-              <p className="italic">"{test.testimonial}"</p>
+              <p className="italic">{test.testimonial}</p>
               <p className="font-bold text-right">- {test.name}</p>
             </div>
           ))}

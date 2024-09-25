@@ -1,5 +1,4 @@
 "use client"; 
-import Layout from "@/app/layout";
 import { useState } from "react";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../firebaseConfig"; 

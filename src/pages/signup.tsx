@@ -2,17 +2,12 @@
 
 "use client";
 
-import Image from 'next/image';
 import { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import app from '../firebaseConfig';
-import Layout from '../app/layout';
-import { useRouter } from 'next/router';
+
 import Navbar from '@/components/Navbar';
 import '../styles/globals.css';
 const SignUpPage = () => {
-    const auth = getAuth(app);
-    const router = useRouter();
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -25,12 +20,7 @@ const SignUpPage = () => {
             return;
         }
 
-        try {
-            await createUserWithEmailAndPassword(auth, email, password);
-            router.push('/');
-        } catch (err) {
-            setError('Error creating account. Please try again.');
-        }
+        
     };
 
     return (
