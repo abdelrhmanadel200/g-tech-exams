@@ -5,7 +5,7 @@ import { useState } from "react";
 import '../styles/globals.css';
 
 const CertificateDownloadPage = () => {
-  const [hoveredLang, setHoveredLang] = useState<number | null>(null);
+  const [hoveredLang, setHoveredLang] = useState<string | null>(null);
   const [selectedLang, setSelectedLang] = useState<string | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>('');
@@ -36,7 +36,7 @@ const CertificateDownloadPage = () => {
       setIsLoading(false);
       setShowModal(false);
       setUserName('');
-    }, 2000); 
+    }, 2000);
   };
 
   return (
