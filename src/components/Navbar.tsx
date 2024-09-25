@@ -89,7 +89,9 @@ const Navbar = () => {
           {dropdownOpen && (
             <div className={`absolute right-0 ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-black'} shadow-lg rounded-md mt-2`}>
               <Link href="/profile" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Profile</Link>
+              <Link href="/certifcate" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Certificates</Link>
               <Link href="/logout" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Logout</Link>
+            
             </div>
           )}
         </div>
