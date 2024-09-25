@@ -1,17 +1,18 @@
 "use client";
+
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import { FiPlus } from 'react-icons/fi'; 
 import '../styles/globals.css';
 
-const UserProfilePage = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState("John Doe");
-  const [jobTitle, setJobTitle] = useState("Software Developer");
-  const [skills, setSkills] = useState(["C#", "JavaScript", "Python"]);
-  const [newSkill, setNewSkill] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
+const UserProfilePage: React.FC = () => {
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [name, setName] = useState<string>("John Doe");
+  const [jobTitle, setJobTitle] = useState<string>("Software Developer");
+  const [skills, setSkills] = useState<string[]>(["C#", "JavaScript", "Python"]);
+  const [newSkill, setNewSkill] = useState<string>("");
+  const [profilePicture, setProfilePicture] = useState<string>("");
 
   useEffect(() => {
     const initialProfilePicture = localStorage.getItem('profilePicture') || "";
@@ -28,25 +29,25 @@ const UserProfilePage = () => {
   };
 
   const handleAddSkill = () => {
-    if (newSkill) {
-      setSkills([...skills, newSkill]);
+    if (newSkill.trim()) {
+      setSkills([...skills, newSkill.trim()]);
       setNewSkill("");
     }
   };
 
-  const handlePictureChange = (e) => {
-    const file = e.target.files[0];
+  const handlePictureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setProfilePicture(reader.result);
+        setProfilePicture(reader.result as string);
       };
       reader.readAsDataURL(file);
     }
   };
 
   const handlePictureClick = () => {
-    document.getElementById('fileInput').click();
+    document.getElementById('fileInput')?.click();
   };
 
   return (
@@ -83,12 +84,14 @@ const UserProfilePage = () => {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="text-3xl font-bold border-b-2 border-gray-300 focus:outline-none transition duration-300" />
+                  className="text-3xl font-bold border-b-2 border-gray-300 focus:outline-none transition duration-300" 
+                />
                 <input
                   type="text"
                   value={jobTitle}
                   onChange={(e) => setJobTitle(e.target.value)}
-                  className="text-lg text-gray-600 mt-2 border-b-2 border-gray-300 focus:outline-none transition duration-300" />
+                  className="text-lg text-gray-600 mt-2 border-b-2 border-gray-300 focus:outline-none transition duration-300" 
+                />
               </>
             ) : (
               <>
@@ -116,7 +119,8 @@ const UserProfilePage = () => {
                 value={newSkill}
                 onChange={(e) => setNewSkill(e.target.value)}
                 placeholder="Add a new skill"
-                className="border p-2 rounded w-full" />
+                className="border p-2 rounded w-full" 
+              />
               <button onClick={handleAddSkill} className="mt-2 bg-teal-600 text-white rounded-full px-4 py-2 transition-transform transform hover:scale-105 duration-300 ease-in-out">
                 Add Skill
               </button>
@@ -135,11 +139,11 @@ const UserProfilePage = () => {
               Edit Profile
             </button>
           )}
-          <button className="bg-gray-300 text-black text-lg font-semibold rounded-full px-6 py-2 transition-transform transform hover:scale-105 duration-300 ease-in-out">
           <Link href="/exam">
-            View Exams
-            </Link>
-          </button>
+            <button className="bg-gray-300 text-black text-lg font-semibold rounded-full px-6 py-2 transition-transform transform hover:scale-105 duration-300 ease-in-out">
+              View Exams
+            </button>
+          </Link>
         </div>
       </div>
     </>

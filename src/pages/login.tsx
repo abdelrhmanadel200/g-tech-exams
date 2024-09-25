@@ -10,7 +10,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     
     const response = await fetch('/api/login', {

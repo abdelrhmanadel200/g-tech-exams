@@ -1,35 +1,36 @@
 "use client";
+
 import Navbar from "@/components/Navbar";
 import { useState } from 'react';
 import '../styles/globals.css';
 
 const ContestCreationPage = () => {
-  const [contestName, setContestName] = useState('');
-  const [writer, setWriter] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [length, setLength] = useState('');
-  const [participants, setParticipants] = useState(0);
-  const [contests, setContests] = useState([]);
-  const [pastContests, setPastContests] = useState([
+  const [contestName, setContestName] = useState<string>('');
+  const [writer, setWriter] = useState<string>('');
+  const [startDate, setStartDate] = useState<string>('');
+  const [length, setLength] = useState<number | string>(''); // Allowing both number and string
+  const [participants, setParticipants] = useState<number>(0);
+  const [contests, setContests] = useState<Array<{ id: number; name: string; writer: string; startDate: string; length: number; category: string; status: string; results: string }>>([]);
+  const [pastContests, setPastContests] = useState<Array<{ id: number; name: string; writer: string; startDate: string; length: number; results: string }>>([
     { id: 1, name: "Spring Code Sprint", writer: "Alice", startDate: "2023-03-01T10:00", length: 120, results: "Results available" },
     { id: 2, name: "Summer Algorithm Challenge", writer: "Bob", startDate: "2023-05-15T09:00", length: 180, results: "Results pending" },
     { id: 3, name: "Autumn Debugging Contest", writer: "Charlie", startDate: "2023-09-01T14:00", length: 60, results: "Results available" },
     { id: 4, name: "Winter Code Jam", writer: "Dana", startDate: "2023-12-10T11:00", length: 240, results: "Results available" },
     { id: 5, name: "New Year Hackathon", writer: "Eve", startDate: "2024-01-05T10:00", length: 360, results: "Results pending" },
   ]);
-  const [category, setCategory] = useState('');
-  const [showForm, setShowForm] = useState(false);
+  const [category, setCategory] = useState<string>('');
+  const [showForm, setShowForm] = useState<boolean>(false);
   
   const categories = ['Coding', 'Algorithms', 'Data Structures'];
 
-  const handleCreateContest = (e) => {
+  const handleCreateContest = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newContest = {
       id: contests.length + pastContests.length + 1,
       name: contestName,
       writer,
       startDate,
-      length,
+      length: Number(length), // Ensure length is a number
       participants,
       category,
       status: new Date(startDate) < new Date() ? 'Finished' : 'Upcoming',
@@ -47,13 +48,13 @@ const ContestCreationPage = () => {
     setContestName('');
     setWriter('');
     setStartDate('');
-    setLength('');
+    setLength(''); // Reset length to an empty string
     setParticipants(0);
     setCategory('');
     setShowForm(false);
   };
 
-  const getStatusClass = (status) => {
+  const getStatusClass = (status: string) => {
     switch (status) {
       case 'Upcoming':
         return 'bg-green-500 text-white';

@@ -65,7 +65,7 @@ const ChallengeAIPage = () => {
   const [showAIAnswer, setShowAIAnswer] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const correctAnswer = questions[currentQuestionIndex].answer;
 

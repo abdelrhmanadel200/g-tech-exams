@@ -19,7 +19,7 @@ const ExamPage = () => {
     "Qiskit", "R", "Bash"
   ];
 
-  const handleLanguageClick = (language) => {
+  const handleLanguageClick = (language: string) => {
     setLoading(true);
     setTimeout(() => { 
       router.push(`/${language.toLowerCase()}`);
