@@ -33,7 +33,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className={`flex items-center justify-between shadow-md h-16 px-6 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+    <header className={`flex items-center justify-between shadow-md h-16 px-6 ${darkMode ? 'bg-gradient-to-r from-[#00454A] to-[#007C7E]' : 'bg-gradient-to-r from-teal-500 to-teal-700'}`}>
       <div className="flex-shrink-0">
         <Link href="/">
           <Image src="/images/c186678f7cd589c185fff8baa189e685.png" alt="Logo" className="h-10" width={80} height={80} />
@@ -42,7 +42,7 @@ const Navbar = () => {
 
       {/* Hamburger Button */}
       <button 
-        className={`sm:hidden focus:outline-none ${darkMode ? 'text-gray-300' : 'text-black'}`} 
+        className={`sm:hidden focus:outline-none ${darkMode ? 'text-gray-300' : 'text-white'}`} 
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-expanded={mobileMenuOpen}
         aria-label="Toggle navigation"
@@ -59,7 +59,7 @@ const Navbar = () => {
       <nav 
         className={`${
           mobileMenuOpen ? 'flex' : 'hidden'
-        } sm:flex flex-col sm:flex-row items-center absolute sm:static top-16 right-0 w-full sm:w-auto ${darkMode ? 'bg-gray-800' : 'bg-white'} z-20 transition-all duration-500 ease-in-out sm:ml-10`}
+        } sm:flex flex-col sm:flex-row items-center absolute sm:static top-16 right-0 w-full sm:w-auto bg-white sm:bg-transparent z-20 transition-all duration-500 ease-in-out sm:ml-10`}
         role="navigation"
       >
         {/* Dark Mode Toggle */}
@@ -72,15 +72,15 @@ const Navbar = () => {
         </div>
 
         {/* Links */}
-        <Link href="/" className={`flex items-center px-4 py-2 ${darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-200'} transition duration-300 mx-2 rounded-lg`} onClick={handleLinkClick}>
+        <Link href="/" className={`flex items-center px-4 py-2 ${darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 sm:text-white hover:bg-gray-200'} transition duration-300 mx-2 rounded-lg`} onClick={handleLinkClick}>
           <FiHome className="mr-2" /> Home
         </Link>
 
-        <Link href="https://gammal.tech" className={`flex items-center px-4 py-2 ${darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-200'} transition duration-300 mx-2 rounded-lg`} onClick={handleLinkClick}>
+        <Link href="https://gammal.tech" className={`flex items-center px-4 py-2 ${darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 sm:text-white hover:bg-gray-200'} transition duration-300 mx-2 rounded-lg`} onClick={handleLinkClick}>
           <FiInfo className="mr-2" /> About
         </Link>
 
-        <Link href="/pricing" className={`flex items-center px-4 py-2 ${darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-200'} transition duration-300 mx-2 rounded-lg`} onClick={handleLinkClick}>
+        <Link href="/pricing" className={`flex items-center px-4 py-2 ${darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 sm:text-white hover:bg-gray-200'} transition duration-300 mx-2 rounded-lg`} onClick={handleLinkClick}>
           <FiDollarSign className="mr-2" /> Pricing
         </Link>
 
@@ -90,7 +90,7 @@ const Navbar = () => {
           onMouseEnter={handleMouseEnterDropdown} 
           onMouseLeave={handleMouseLeaveDropdown}
         >
-          <button className={`flex items-center px-4 py-2 ${darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-200'} mx-2 rounded-lg`}>
+          <button className={`flex items-center px-4 py-2 ${darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 sm:text-white hover:bg-gray-200'} mx-2 rounded-lg`}>
             <FiUser className="mr-2" /> User <FiChevronDown className="ml-1" />
           </button>
           {dropdownOpen && (
