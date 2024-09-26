@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import "../styles/globals.css"
 const HomePage = () => {
   return (
     <><Navbar /><div className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-b from-teal-50 to-white p-10">
