@@ -100,7 +100,7 @@ const SyntaxErrorChallenge = () => {
   };
 
   const calculateFinalFeedback = () => {
-  const percentage = ((score / questions.length) * 100).toFixed(2); // Calculate percentage
+  const percentage = (((score / questions.length)+1) * 100 ).toFixed(2); // Calculate percentage
   if (score === questions.length) {
     setFinalFeedback("🎉 Amazing! You got them all right! 🎉");
   } else {
