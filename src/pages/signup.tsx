@@ -3,7 +3,7 @@
 "use client";
 
 import { useState } from 'react';
-
+import Link from "next/link"
 import Navbar from '@/components/Navbar';
 import '../styles/globals.css';
 const SignUpPage = () => {
@@ -62,12 +62,16 @@ const SignUpPage = () => {
                             className="mt-1 block w-full h-12 bg-gray-50 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500" />
                     </div>
                     {error && <p className="text-red-600 text-sm">{error}</p>}
+                   
+                    <Link href="/">
                     <button
                         type="submit"
                         className="w-full h-12 bg-teal-600 rounded-md text-white text-lg font-semibold hover:bg-teal-700 transition duration-200"
                     >
+                       
                         Sign Up
                     </button>
+                    </Link>
                 </form>
             </div>
         </div></>

@@ -1,9 +1,10 @@
 import Link from 'next/link';
-
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-b from-teal-50 to-white p-10">
-      
+    <><Navbar /><div className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-b from-teal-50 to-white p-10">
+
       {/* Hero Section */}
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold text-teal-700 mb-4">Welcome to Gammal Tech Exams!</h1>
@@ -102,8 +103,9 @@ const HomePage = () => {
           </button>
         </Link>
       </div>
-      
+
     </div>
+    </>
   );
 };
 

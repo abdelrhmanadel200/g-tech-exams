@@ -1,5 +1,5 @@
 "use client"; // Add this line at the top
-
+import Image from 'next/image'; 
 import Link from 'next/link'; 
 import { useState, useEffect } from 'react'; 
 import { FiHome, FiInfo, FiDollarSign, FiUser, FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
@@ -36,7 +36,7 @@ const Navbar = () => {
     <header className={`flex items-center justify-between shadow-md h-16 ${darkMode ? 'bg-gradient-to-r from-[#00454A] to-[#007C7E]' : 'bg-gradient-to-r from-teal-500 to-teal-700'}`}>
       <div className="flex-shrink-0">
         <Link href="/">
-        <img src="/images/c186678f7cd589c185fff8baa189e685.png" alt="Logo" className="ml-10 h-10" />
+        < Image src="/images/c186678f7cd589c185fff8baa189e685.png" alt="Logo" className="ml-10 h-10" width={100} height={100} />
         </Link>
       </div>
 
