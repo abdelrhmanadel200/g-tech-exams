@@ -59,7 +59,7 @@ const Navbar = () => {
       <nav 
         className={`${
           mobileMenuOpen ? 'flex' : 'hidden'
-        } sm:flex flex-col sm:flex-row items-center absolute sm:static top-16 left-0 w-full sm:w-auto bg-white sm:bg-transparent z-20 sm:z-auto transition-all duration-300 sm:ml-10`}
+        } sm:flex flex-col sm:flex-row items-center absolute sm:static top-16 right-4 w-[60%] sm:w-auto bg-white sm:bg-transparent z-20 sm:z-auto transition-all duration-300 sm:ml-10`}
         role="navigation"
       >
         {/* Dark Mode Toggle */}
