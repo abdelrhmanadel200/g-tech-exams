@@ -5,33 +5,32 @@ import '../../../../styles/globals.css';
 
 const questions = [
   {
-    question: `#include <stdio.h>\nint main() {\n    int num = 10;\n    printf("The character is: %c\\n", ch);\n    return 0;\n}`,
+    question: `#include <stdio.h>\nint main() {\n    int num = 10;\n    printf("Number: %d\\n", num);\n    return 0;\n}`,
     options: [
-      'Variable "ch" is undeclared',
+      'No errors found',
       'Missing semicolon in printf statement',
-      'No errors found'
-    ],
-    correctAnswer: 'Variable "ch" is undeclared'
-  },
-  {
-    question: `int main() {\n    int a = 5\n    printf("%d", a);\n}`,
-    options: [
-      'Missing semicolon at the end of line 2',
-      'No errors found',
-      'Variable "a" is undeclared'
-    ],
-    correctAnswer: 'Missing semicolon at the end of line 2'
-  },
-  {
-    question: `int main() {\n    int a = 5\n    printf("%d", a);\n}`,
-    options: [
-      'Missing semicolon at the end of line 2',
-      'No errors found',
-      'Variable "a" is undeclared'
+      'Variable "num" is undeclared'
     ],
     correctAnswer: 'No errors found'
   },
-  // Add more questions here
+  {
+    question: `int main() {\n    printf("Hello World"\n    return 0;\n}`,
+    options: [
+      'Missing semicolon at the end of line 1',
+      'Missing closing parenthesis',
+      'No errors found'
+    ],
+    correctAnswer: 'Missing closing parenthesis'
+  },
+  {
+    question: `int main() {\n    int x = 5;\n    printf("%d", x);\n}`,
+    options: [
+      'No errors found',
+      'Variable "x" is undeclared',
+      'Missing return statement'
+    ],
+    correctAnswer: 'No errors found'
+  },
 ];
 
 const SyntaxErrorChallenge = () => {
@@ -49,8 +48,8 @@ const SyntaxErrorChallenge = () => {
       setTimer((prev) => {
         if (prev === 1) {
           clearInterval(countdown);
-          handleNextQuestion(); // Automatically move to next question if time runs out
-          return 60; // Reset the timer for the next question
+          handleNextQuestion();
+          return 60;
         }
         return prev - 1;
       });
@@ -67,21 +66,20 @@ const SyntaxErrorChallenge = () => {
       const typingTimeout = setTimeout(() => {
         setTypingEffect((prev) => prev + questionText[charIndex]);
         setCharIndex(charIndex + 1);
-      }, 50); // Adjust typing speed here (faster)
+      }, 50);
       return () => clearTimeout(typingTimeout);
     }
   }, [charIndex, currentQuestionIndex, isFinished]);
 
   const handleAnswerSelection = (answer: string) => {
-    if (hasAnswered) return; // Prevent multiple clicks
+    if (hasAnswered) return;
 
     setHasAnswered(true);
     if (answer === questions[currentQuestionIndex].correctAnswer) {
-      setScore(score + 1);
+      setScore(prev => prev + 1);
     }
 
-    // Move to the next question after a short delay
-    setTimeout(handleNextQuestion, 10); // Allow a short delay before moving on
+    setTimeout(handleNextQuestion, 1000);
   };
 
   const handleNextQuestion = () => {
@@ -94,19 +92,17 @@ const SyntaxErrorChallenge = () => {
       setCurrentQuestionIndex(nextIndex);
       setCharIndex(0);
       setTypingEffect('');
-      setTimer(60); // Reset timer for the new question
-      setHasAnswered(false); // Reset answered state
+      setTimer(60);
+      setHasAnswered(false);
     }
   };
 
   const calculateFinalFeedback = () => {
-  const percentage = (((score / questions.length)+1) * 100 ).toFixed(2); // Calculate percentage
-  if (score === questions.length) {
-    setFinalFeedback("🎉 Amazing! You got them all right! 🎉");
-  } else {
-    setFinalFeedback(`Your Score: ${percentage}% (${score} out of ${questions.length}). Keep it up! You'll get them next time! 💪`);
-  }
-};
+    const percentage = ((score / questions.length) * 100).toFixed(2);
+    setFinalFeedback(score === questions.length
+      ? "🎉 Amazing! You got them all right! 🎉"
+      : `Your Score: ${percentage}% (${score} out of ${questions.length}). Keep it up! 💪`);
+  };
 
   const restartQuiz = () => {
     setCurrentQuestionIndex(0);
@@ -115,14 +111,14 @@ const SyntaxErrorChallenge = () => {
     setIsFinished(false);
     setTypingEffect('');
     setCharIndex(0);
-    setHasAnswered(false); 
-    setFinalFeedback(''); 
+    setHasAnswered(false);
+    setFinalFeedback('');
   };
 
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-teal-50 to-white  p-6">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-teal-50 to-white p-6">
         <div className={`bg-white rounded-lg shadow-lg p-8 w-full h-full flex ${isFinished ? 'hidden' : ''}`}>
           <div className="flex-1 p-4">
             <div className="flex items-center justify-between mb-4">
@@ -143,7 +139,7 @@ const SyntaxErrorChallenge = () => {
                   key={index}
                   onClick={() => handleAnswerSelection(option)}
                   className={`bg-teal-500 rounded-lg p-4 text-lg font-medium text-white hover:bg-teal-600 transition duration-200 transform hover:scale-105 ${hasAnswered ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  disabled={hasAnswered} 
+                  disabled={hasAnswered}
                 >
                   {option}
                 </button>
@@ -198,26 +194,6 @@ const SyntaxErrorChallenge = () => {
           overflow: hidden;
         }
 
-        .confetti div {
-          position: absolute;
-          width: 10px;
-          height: 10px;
-          background: rgba(255, 223, 0, 0.7);
-          opacity: 0.8;
-          animation: confetti-fall 2s linear infinite;
-        }
-
-        .confetti div:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .confetti div:nth-child(2) { left: 20%; animation-delay: 0.2s; }
-        .confetti div:nth-child(3) { left: 30%; animation-delay: 0.4s; }
-        .confetti div:nth-child(4) { left: 40%; animation-delay: 0.6s; }
-        .confetti div:nth-child(5) { left: 50%; animation-delay: 0.8s; }
-        .confetti div:nth-child(6) { left: 60%; animation-delay: 1s; }
-        .confetti div:nth-child(7) { left: 70%; animation-delay: 1.2s; }
-        .confetti div:nth-child(8) { left: 80%; animation-delay: 1.4s; }
-        .confetti div:nth-child(9) { left: 90%; animation-delay: 1.6s; }
-        .confetti div:nth-child(10) { left: 100%; animation-delay: 1.8s; }
-
         .celebration-message {
           font-size: 2rem;
           font-weight: bold;
@@ -237,11 +213,6 @@ const SyntaxErrorChallenge = () => {
 
           .flex-1 {
             width: 100%;
-          }
-
-          .options {
-            flex-direction: column;
-            align-items: center;
           }
         }
       `}</style>
