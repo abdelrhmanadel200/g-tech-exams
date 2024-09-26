@@ -57,9 +57,9 @@ const Navbar = () => {
 
       {/* Main Navigation */}
       <nav 
-        className={`${
-          mobileMenuOpen ? 'flex' : 'hidden'
-        } sm:flex flex-col sm:flex-row items-center absolute sm:static top-16 right-0 w-full sm:w-auto bg-white sm:bg-transparent z-20 transition-all duration-500 ease-in-out sm:ml-10`}
+        className={`fixed top-16 right-0 w-64 bg-white transform transition-transform duration-300 ease-in-out z-20 ${
+          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        } sm:flex sm:static sm:translate-x-0 sm:w-auto`}
         role="navigation"
       >
         {/* Dark Mode Toggle */}
