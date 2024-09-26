@@ -100,12 +100,13 @@ const SyntaxErrorChallenge = () => {
   };
 
   const calculateFinalFeedback = () => {
-    if (score === questions.length - 1) {
-      setFinalFeedback("🎉 Amazing! You got them all right! 🎉");
-    } else {
-      setFinalFeedback(`Your Score: ${score} out of ${questions.length}. Keep it up! You'll get them next time! 💪`);
-    }
-  };
+  const percentage = ((score / questions.length) * 100).toFixed(2); // Calculate percentage
+  if (score === questions.length) {
+    setFinalFeedback("🎉 Amazing! You got them all right! 🎉");
+  } else {
+    setFinalFeedback(`Your Score: ${percentage}% (${score} out of ${questions.length}). Keep it up! You'll get them next time! 💪`);
+  }
+};
 
   const restartQuiz = () => {
     setCurrentQuestionIndex(0);
