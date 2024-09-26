@@ -70,7 +70,7 @@ const Navbar = () => {
           <FiHome className="mr-1" /> Home
         </Link>
 
-        <Link href="/about" className={`flex items-center ${darkMode ? 'text-gray-300 hover:text-white' : 'text-white hover:text-gray-200'} transition duration-200 mx-2 p-2 rounded-md`} onClick={handleLinkClick}>
+        <Link href="gammal.tech" className={`flex items-center ${darkMode ? 'text-gray-300 hover:text-white' : 'text-white hover:text-gray-200'} transition duration-200 mx-2 p-2 rounded-md`} onClick={handleLinkClick}>
           <FiInfo className="mr-1" /> About
         </Link>
 
