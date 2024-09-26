@@ -10,9 +10,8 @@ const CertificateDownloadPage = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [downloadedCertificates, setDownloadedCertificates] = useState<
-    Array<{ lang: string | null; name: string }>
-  >([]);
+  const [downloadedCertificates, setDownloadedCertificates] = useState<Array<{ lang: string | null; name: string }>>([]);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const languages = [
     { name: "JavaScript", description: "Master the fundamentals and advanced concepts of JavaScript." },
@@ -23,6 +22,11 @@ const CertificateDownloadPage = () => {
   ];
 
   const handleDownload = (lang: string) => {
+    if (!userName.trim()) {
+      setErrorMessage("Please enter your name before downloading the certificate.");
+      return;
+    }
+    setErrorMessage(''); // Clear error if valid
     setSelectedLang(lang);
     setShowModal(true);
   };
@@ -31,12 +35,11 @@ const CertificateDownloadPage = () => {
     setIsLoading(true);
 
     setTimeout(() => {
-      alert(`Downloading certificate for ${selectedLang} for ${userName}`);
       setDownloadedCertificates(prev => [...prev, { lang: selectedLang, name: userName }]);
       setIsLoading(false);
       setShowModal(false);
       setUserName('');
-    }, 2000);
+    }, 100);
   };
 
   return (
@@ -55,6 +58,8 @@ const CertificateDownloadPage = () => {
           required
         />
 
+        {errorMessage && <div className="mt-4 text-red-500">{errorMessage}</div>}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {languages.map((lang) => (
             <div
@@ -69,7 +74,7 @@ const CertificateDownloadPage = () => {
               <button
                 onClick={() => handleDownload(lang.name)}
                 className="mt-auto w-full p-3 bg-teal-600 text-white rounded-lg shadow hover:bg-teal-700 transition"
-                disabled={!userName}
+                
               >
                 Download Certificate
               </button>

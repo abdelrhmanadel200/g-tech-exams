@@ -21,7 +21,8 @@ const ResetPasswordPage: React.FC = () => {
     try {
       await sendPasswordResetEmail(auth, email);
       setMessage("Password reset email sent! Please check your inbox.");
-    } catch (error: any) { // Use any for error type here
+    } catch (error: any) { // Disable ESLint for this line
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setMessage(error.message);
     } finally {
       setIsLoading(false);

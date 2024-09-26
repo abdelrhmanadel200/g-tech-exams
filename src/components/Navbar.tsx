@@ -41,7 +41,7 @@ const Navbar = () => {
       </div>
 
       <button 
-        className={`sm:hidden ${darkMode ? 'text-gray-300' : 'text-white'}`} 
+        className={`sm:hidden  ${darkMode ? 'text-white' : 'text-white'}  mr-5`} 
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-expanded={mobileMenuOpen}
         aria-label="Toggle navigation"
@@ -54,8 +54,9 @@ const Navbar = () => {
       )}
 
       <nav 
-        className={`relative flex items-center ml-10 transition-all duration-200 ${mobileMenuOpen ? 'flex-col absolute top-16 left-0 w-full sm:static sm:flex-row' : 'hidden sm:flex'}`}
+        className={`relative flex items-center ml-10 transition-all duration-200 ${mobileMenuOpen ? ' flex-col absolute top-16 left-0 w-full bg-teal-500 z-20 sm:static sm:flex-row' : 'hidden sm:flex'}`}
         role="navigation"
+        
       >
         {/* Dark Mode Toggle */}
         <div className="flex items-center ml-4">
@@ -70,7 +71,7 @@ const Navbar = () => {
           <FiHome className="mr-1" /> Home
         </Link>
 
-        <Link href="/about" className={`flex items-center ${darkMode ? 'text-gray-300 hover:text-white' : 'text-white hover:text-gray-200'} transition duration-200 mx-2 p-2 rounded-md`} onClick={handleLinkClick}>
+        <Link href="https://www.gammal.tech/" className={`flex items-center ${darkMode ? 'text-gray-300 hover:text-white' : 'text-white hover:text-gray-200'} transition duration-200 mx-2 p-2 rounded-md`} onClick={handleLinkClick}>
           <FiInfo className="mr-1" /> About
         </Link>
 

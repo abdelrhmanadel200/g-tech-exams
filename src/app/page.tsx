@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import "../styles/globals.css"
 const HomePage = () => {
   return (
     <><Navbar /><div className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-b from-teal-50 to-white p-10">
@@ -22,7 +22,7 @@ const HomePage = () => {
       <div className="flex justify-center space-x-4 mb-10">
         <Link href="/exam">
           <button className="bg-teal-600 text-white py-2 px-4 rounded-lg hover:bg-teal-700 transition duration-300">
-            Take an Exam
+            Take Exam
           </button>
         </Link>
         <Link href="/practice">
@@ -38,7 +38,7 @@ const HomePage = () => {
       </div>
 
       {/* Announcements Section */}
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full lg:w-3/4 mb-10">
+      <div className="bg-white p-6 rounded-lg shadow-lg text-black w-full lg:w-3/4 mb-10">
         <h2 className="text-3xl font-bold text-teal-600 mb-4">Latest Announcements</h2>
         <ul className="space-y-4">
           {[

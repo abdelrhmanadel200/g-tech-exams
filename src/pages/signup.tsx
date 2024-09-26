@@ -6,8 +6,10 @@ import { useState } from 'react';
 import Link from "next/link"
 import Navbar from '@/components/Navbar';
 import '../styles/globals.css';
+import { useRouter } from 'next/router';
+
 const SignUpPage = () => {
-    
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -66,12 +68,21 @@ const SignUpPage = () => {
                     <Link href="/">
                     <button
                         type="submit"
-                        className="w-full h-12 bg-teal-600 rounded-md text-white text-lg font-semibold hover:bg-teal-700 transition duration-200"
+                        className="mt-4 w-full h-12 bg-teal-600 rounded-md text-white text-lg font-semibold hover:bg-teal-700 transition duration-200"
                     >
                        
                         Sign Up
                     </button>
                     </Link>
+                    <div className="mt-4 text-center">
+          <span className="text-gray-600">Already have an account? </span>
+          <button
+            className="text-teal-600 underline"
+            onClick={() => router.push('/login')}
+          >
+            Login
+          </button>
+        </div>
                 </form>
             </div>
         </div></>

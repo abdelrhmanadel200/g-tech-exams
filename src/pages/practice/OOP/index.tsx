@@ -99,7 +99,7 @@ const PracticeTopicsPage: React.FC = () => {
   const [filteredTopics, setFilteredTopics] = useState(topics);
   const router = useRouter();
 
-  const handleTopicClick = (_topicName: string) => {
+  const handleTopicClick = () => {
     router.push(`/exam/C/level/easy`);
   };
 
@@ -153,7 +153,7 @@ const PracticeTopicsPage: React.FC = () => {
             <div
               key={topic.name}
               className={`rounded-xl shadow-lg p-6 flex flex-col justify-between items-center bg-white transition-all duration-300 hover:shadow-xl cursor-pointer border-2 border-gray-300 hover:${difficultyStyles[topic.difficulty].hover}`}
-              onClick={() => handleTopicClick(topic.name)}
+              onClick={() => handleTopicClick()}
             >
               <h2 className="text-2xl font-semibold mb-2 text-gray-800">{topic.name}</h2>
               <p className="text-center mb-4 text-gray-600">{topic.description}</p>
