@@ -70,7 +70,7 @@ const ContestCreationPage = () => {
   return (
     <>
       <Navbar />
-      <div className="w-full min-h-screen bg-gradient-to-b from-teal-50 to-white flex flex-col items-center">
+      <div className="w-full min-h-screen bg-gradient-to-b from-teal-100 to-white flex flex-col items-center">
         <div className="max-w-5xl w-full p-8 bg-white rounded-lg shadow-lg">
           <h1 className="text-4xl font-bold text-center mb-6 text-teal-700">Contest Management</h1>
 

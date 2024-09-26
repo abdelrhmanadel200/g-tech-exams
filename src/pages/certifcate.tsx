@@ -45,7 +45,7 @@ const CertificateDownloadPage = () => {
   return (
     <>
       <Navbar />
-      <div className="w-full min-h-screen bg-gradient-to-r from-[#54C392] to-white flex flex-col items-center p-10">
+      <div className="w-full min-h-screen bg-gradient-to-b from-teal-100 to-white flex flex-col items-center p-10">
         <h1 className="text-4xl md:text-5xl font-bold text-black mb-4 text-center">Download Your Programming Certificate</h1>
         <p className="text-lg md:text-xl text-black mb-8 text-center max-w-2xl">Select a programming language, enter your name, and click to download your personalized certificate!</p>
 

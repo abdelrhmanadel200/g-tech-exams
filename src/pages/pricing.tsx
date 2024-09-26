@@ -2,15 +2,16 @@
 import '../styles/globals.css';
 import React from 'react';
 import Navbar from '@/components/Navbar';
-
+import Link from "next/link";
 const PricingPage = () => {
   return (
-    <><Navbar /><><div className="bg-gradient-to-b from-teal-50 to-white py-20 text-black text-center">
+    <><Navbar /><><div className="bg-gradient-to-b from-teal-100 to-white py-20 text-black text-center">
       <h1 className="text-6xl font-bold mb-4">Choose Your Plan</h1>
       <p className="text-xl">Find the perfect plan for your needs</p>
     </div><div className="max-w-6xl mx-auto p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
        
-        <div className="bg-white shadow-lg rounded-lg p-6 transition-transform transform hover:scale-105">
+    <div className="bg-white shadow-lg rounded-lg p-6 border-2 border-teal-500 transition-transform transform hover:scale-105">
+
           <h2 className="text-3xl font-semibold text-center text-teal-500 mb-2">Economy</h2>
           <p className="text-2xl text-center text-gray-800 mb-4">50 EGP</p>
           <ul className="mb-4">
@@ -21,7 +22,8 @@ const PricingPage = () => {
         </div>
 
        
-        <div className="bg-white shadow-lg rounded-lg p-6 transition-transform transform hover:scale-105">
+        <div className="bg-white shadow-lg rounded-lg p-6 border-2 border-teal-500 transition-transform transform hover:scale-105">
+
           <h2 className="text-3xl font-semibold text-center text-teal-500 mb-2">Gold</h2>
           <p className="text-2xl text-center text-gray-800 mb-4">150 EGP</p>
           <ul className="mb-4">
@@ -32,7 +34,7 @@ const PricingPage = () => {
         </div>
 
         
-        <div className="bg-white shadow-lg rounded-lg p-6 transition-transform transform hover:scale-105">
+        <div className="bg-white shadow-lg rounded-lg p-6 border-2 border-teal-500 transition-transform transform hover:scale-105">
           <h2 className="text-3xl font-semibold text-center text-teal-500 mb-2">Premium</h2>
           <p className="text-2xl text-center text-gray-800 mb-4">299 EGP</p>
           <ul className="mb-4">
@@ -61,7 +63,9 @@ const PricingPage = () => {
         </div>
       </div><div className="bg-teal-500 text-white py-10 text-center">
         <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
+        <Link href="/signup">
         <button className="bg-white text-teal-500 py-2 px-4 rounded-md hover:bg-gray-200">Sign Up Now</button>
+        </Link>
       </div></></>
    
   );

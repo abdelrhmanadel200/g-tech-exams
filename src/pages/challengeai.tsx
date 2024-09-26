@@ -97,7 +97,7 @@ const ChallengeAIPage = () => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-teal-50 to-white p-4">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-teal-100 to-white p-4">
         <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg">
           <h1 className="text-3xl font-bold text-center text-teal-600 mb-6">AI Challenge: Programming Quiz</h1>
 
