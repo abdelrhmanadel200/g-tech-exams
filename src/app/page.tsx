@@ -38,11 +38,7 @@ const HomePage = () => {
       </div>
 
       {/* Announcements Section */}
-<<<<<<< HEAD
       <div className="bg-white p-6 rounded-lg shadow-lg text-black w-full lg:w-3/4 mb-10">
-=======
-      <div className="bg-white p-6 text-black rounded-lg shadow-lg w-full lg:w-3/4 mb-10">
->>>>>>> 4ef395c893db863ca4f226bcdf444f8e41d10789
         <h2 className="text-3xl font-bold text-teal-600 mb-4">Latest Announcements</h2>
         <ul className="space-y-4">
           {[
