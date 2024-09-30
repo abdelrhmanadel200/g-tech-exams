@@ -36,7 +36,7 @@ const Navbar = () => {
     <header className={`flex items-center justify-between shadow-md h-16 ${darkMode ? 'bg-gradient-to-r from-[#00454A] to-[#007C7E]' : 'bg-gradient-to-r from-teal-500 to-teal-700'}`}>
       <div className="flex-shrink-0">
         <Link href="/">
-        < Image src="/images/c186678f7cd589c185fff8baa189e685.png" alt="Logo" className="ml-10 h-10" width={100} height={100} />
+          <Image src="/images/c186678f7cd589c185fff8baa189e685.png" alt="Logo" className="ml-10 h-10" width={100} height={100} />
         </Link>
       </div>
 
@@ -88,11 +88,10 @@ const Navbar = () => {
             <FiUser className="mr-1" /> User <FiChevronDown className="ml-1" />
           </button>
           {dropdownOpen && (
-            <div className={`absolute right-0 ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-black'} shadow-lg rounded-md mt-2`}>
+            <div className={`absolute right-4 mt-4 ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-black'} shadow-lg rounded-md`}>
               <Link href="/profile" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Profile</Link>
               <Link href="/certifcate" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Certificates</Link>
               <Link href="/logout" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Logout</Link>
-            
             </div>
           )}
         </div>
