@@ -88,10 +88,12 @@ const Navbar = () => {
             <FiUser className="mr-1" /> User <FiChevronDown className="ml-1" />
           </button>
           {dropdownOpen && (
-            <div className={`absolute right-4 mt-4 ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-black'} shadow-lg rounded-md`}>
-              <Link href="/profile" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Profile</Link>
-              <Link href="/certifcate" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Certificates</Link>
-              <Link href="/logout" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Logout</Link>
+            <div className={`absolute left-0 right-0 mt-4 w-full ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-black'} shadow-lg rounded-md`}>
+              <div className="flex justify-around">
+                <Link href="/profile" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Profile</Link>
+                <Link href="/certifcate" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Certificates</Link>
+                <Link href="/logout" className={`block px-4 py-2 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`} onClick={handleLinkClick}>Logout</Link>
+              </div>
             </div>
           )}
         </div>
