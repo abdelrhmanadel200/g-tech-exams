@@ -54,7 +54,7 @@ const Navbar = () => {
       )}
 
       <nav 
-        className={`relative flex items-center ml-10 transition-all duration-200 ${mobileMenuOpen ? ' flex-col absolute top-16 left-0 w-full bg-teal-500 z-20 sm:static sm:flex-row' : 'hidden sm:flex'}`}
+        className={`relative flex items-center ml-10 transition-all duration-200 ${mobileMenuOpen ? ' flex-col    w-full bg-teal-500 z-20 sm:static sm:flex-row' : 'hidden sm:flex'}`}
         role="navigation"
         
       >
